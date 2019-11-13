@@ -1,0 +1,15 @@
+body {
+    text-align: center;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.jumbotron {
+   background: rgb(124, 11, 158);
+   color: rgb(232, 206, 247); 
+}
+
+.table {
+    width: 60%;
+    margin: auto;
+}

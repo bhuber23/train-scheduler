@@ -35,6 +35,7 @@ var firebaseConfig = {
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     };
 
+
     database.ref().push(newTrain);
 
     $("#train-name-input").val("");
@@ -55,7 +56,7 @@ var firebaseConfig = {
     console.log(train);
     console.log(firstTime);
 
-    
+    //Math
     var firstTimeConverted = moment(childSnapshot.val().time, "HH:mm").subtract(1, "years");
     var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
         console.log("Difference in time: " + diffTime);
@@ -65,7 +66,21 @@ var firebaseConfig = {
         console.log("Minutes away " + minutesAway);
     var nextTrain = moment().add(minutesAway, "minutes");
         console.log("Arrival time: " + moment(nextTrain).format("hh:mm"));
-    nextTrain = moment(nextTrain).format("hh:mm");
+    nextTrain = moment(nextTrain).format("hh:mm A");
     console.log(nextTrain);
-  })
+
+    //Create new rows
+    var newRow = $("<tr>").append(
+        $("<td>").text(train),
+        $("<td>").text(destination),
+        $("<td>").text(trainFrequency),
+        $("<td>").text(nextTrain),
+        $("<td>").text(minutesAway),
+    ); 
+
+    $("#train-table > tbody").append(newRow);
+  }, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code)
+  
+  });
 

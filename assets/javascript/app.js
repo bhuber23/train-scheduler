@@ -35,7 +35,6 @@ var firebaseConfig = {
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     };
 
-
     database.ref().push(newTrain);
 
     $("#train-name-input").val("");
